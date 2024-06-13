@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>splitting.js - 공통 요소(같은 부모를 둔 자식)에 적용</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 1. 필요한 파일 연결 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font: 700 4vw "Noto Sans KR", sans-serif;
+        line-height: 1.5;
+      }
+
+      /* 4. 애니메이션 만들기 */
+      @keyframes roll-in-blurred-bottom {
+        0% {
+          transform: translateY(-800px) rotate(40deg);
+          filter: blur(50px);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+      }
+
+      /* 5. 애니메이션 적용 */
+      .item-wrap div {
+        /* 전체 */
+        animation: roll-in-blurred-bottom 2s both;
+        /* 각각 */
+        animation-delay: calc(600ms * var(--item-index));
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- https://splitting.js.org/ -->
+
+    <div class="item-wrap" data-splitting="items">
+      <div>도저히 손댈 수가 없는 곤란에 부딪혔다면</div>
+      <div>과감하게 그 속으로 뛰어들라.</div>
+      <div>그리하면 불가능하다고 생각했던 일이 가능해진다.</div>
+      <div>용기있는 자로 살아라.</div>
+      <div>운이 따라주지 않는다면</div>
+      <div>용기 있는 가슴으로 불행에 맞서라.</div>
+    </div>
+    <!-- 키케로 -->
+
+    <!-- 3. 초기화 -->
+    <script>
+      Splitting();
+    </script>
+  </body>
+</html>

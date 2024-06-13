@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+      /* w70p+m50-a+bd */
+      width: 70%;
+      margin: 50px auto;
+      border: 1px solid #000;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      margin-top: 30px;
+    }
+
+    .red {
+      background: red;
+
+      /* vh */
+      visibility: hidden;
+    }
+
+    .yellow {
+      background: yellow;
+    }
+
+    .blue {
+      background: blue;
+      visibility: hidden;
+    }
+  </style>
+
+  <!-- gsap 주소 복붙 -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+</head>
+
+<body>
+  <!-- .wrap>.box*3 -->
+  <div class="wrap">
+    <div class="box red"></div>
+    <div class="box yellow"></div>
+    <div class="box blue"></div>
+
+    <button id="btnGo">Go!</button>
+  </div>
+
+  <script>
+    // 대상을 변수에 저장
+    const redBox = document.querySelector('.red');
+    const blueBox = document.querySelector('.blue');
+    const btnGo = document.querySelector('#btnGo');
+
+    gsap.from(redBox, {
+      y: -100,
+      rotation: 90,
+      duration: 2,
+      autoAlpha: 0, /* vh를 써준다.  */
+      delay: 2,
+
+      repeat: -1, // css --> infinite 무한반복
+      yoyo: true, // css --> alternate 번갈아가며
+
+      ease: "bounce.out",
+      // https://gsap.com/resources/getting-started/Easing
+    })
+
+    gsap.to('.yellow', { rotation: 360, repeat: -1, ease: 'none' })
+    // 버튼을 클릭했을 때 애니메이션 되게끔
+    btnGo.addEventListener('click', () => {
+      gsap.to(blueBox, { x: 400, duration: 1.5, autoAlpha: 1, ease: "bounce.out" })
+    })
+
+  </script>
+</body>
+
+</html>

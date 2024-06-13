@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+      /* w70p+m50-a+bd */
+      width: 70%;
+      margin: 50px auto;
+      border: 1px solid #000;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      margin-top: 30px;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .yellow {
+      background: yellow;
+    }
+
+    .blue {
+      background: blue;
+    }
+  </style>
+
+  <!-- gsap 주소 복붙 -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+</head>
+
+<body>
+  <!-- .wrap>.box*3 -->
+  <div class="wrap">
+    <div class="box red"></div>
+    <div class="box yellow"></div>
+    <div class="box blue"></div>
+  </div>
+
+  <script>
+    // console.log(gsap);
+
+    // gsap.to(대상, {애니메이션 옵션})
+    gsap.to('.red', { x: 100, duration: 2, rotation: 360 }) /* 시작지점 세팅 */
+    gsap.from('.yellow', { xPercent: -100, duration: 2, width: 300 }) /* 종료시점 세팅 */
+    gsap.fromTo(
+      '.blue',
+      { x: -200, scale: 1.5 },
+      { x: 100, rotation: 360, scale: 1, duration: 2 }
+    )
+
+    // https://gsap.com/resources/get-started
+  </script>
+</body>
+
+</html>

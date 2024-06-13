@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>splitting.js - 단어에 적용</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 1. 필요한 파일 연결 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font: 800 3vw "Montserrat", sans-serif;
+        line-height: 1.5;
+      }
+
+      /* 4. 애니메이션 만들기 */
+      @keyframes wobble-hor-bottom {
+        0%,
+        100% {
+          transform: translateX(0%);
+          transform-origin: 50% 50%;
+        }
+
+        15% {
+          transform: translateX(-30px) rotate(-6deg);
+        }
+
+        30% {
+          transform: translateX(15px) rotate(6deg);
+        }
+
+        45% {
+          transform: translateX(-15px) rotate(-3.6deg);
+        }
+
+        60% {
+          transform: translateX(9px) rotate(2.4deg);
+        }
+
+        75% {
+          transform: translateX(-6px) rotate(-1.2deg);
+        }
+      }
+
+      /* 5. 애니메이션 적용 */
+      .case1 .char {
+        animation: wobble-hor-bottom 0.8s both;
+        animation-delay: calc(60ms * var(--char-index));
+      }
+      .case2 .word {
+        animation: wobble-hor-bottom 2s both;
+        animation-delay: calc(60ms * var(--word-index));
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- https://splitting.js.org/ -->
+
+    <!-- 2. data-splitting 속성을 적용 -->
+    <h1 data-splitting class="case1">If not now, then when?</h1>
+    <h1 data-splitting class="case2">If not now, then when?</h1>
+
+    <!-- 3. 초기화 -->
+    <script>
+      Splitting();
+    </script>
+  </body>
+</html>

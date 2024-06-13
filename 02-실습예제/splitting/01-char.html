@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>splitting.js - 글자에 적용</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 1. 필요한 파일 연결 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/splitting/dist/splitting.css"
+    />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" /> -->
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font: 700 5vw "Noto Sans KR", sans-serif;
+        line-height: 1.5;
+      }
+
+      /* 4. 원하는 애니메이션 만들기 */
+      @keyframes textAni {
+        0% {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
+
+      /* 5. 애니메이션 적용하기 */
+
+      /* h1 {
+        animation: textAni 1s;
+      } */
+
+      /* char : 글자에 적용. 단어에 적용할 수도 있다 */
+      .char {
+        animation: textAni 2s;
+        animation-delay: calc(100ms * var(--char-index));
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- https://splitting.js.org/ -->
+
+    <!-- 2. data-splitting 속성을 적용 -->
+    <h1 data-splitting>단순하게 살아라.</h1>
+
+    <!-- 3. 초기화 -->
+    <script>
+      Splitting();
+    </script>
+  </body>
+</html>

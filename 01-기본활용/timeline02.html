@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stagger</title>
+
+
+  <style>
+    .wrap {
+      width: 50%;
+      margin: 0 auto;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .yellow {
+      background: yellow;
+    }
+
+    .blue {
+      background: blue;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="box red"></div>
+    <div class="box yellow"></div>
+    <div class="box blue"></div>
+  </div>
+
+  <script>
+    // 타임라인을 생성 --> 여러 요소를 움직이게 하겠다.
+    // const tl = gsap.timeline();
+
+    // tl.from('.red', { autoAlpha: 0, y: -50, rotation: 20, duration: 1 })
+    // tl.from('.yellow', { autoAlpha: 0, y: -50, rotation: 20, duration: 1 }, '-=.5')
+    // tl.from('.blue', { autoAlpha: 0, y: -50, rotation: 20, duration: 1 }, '-=.5')
+
+    // 여러개 있는 애들을 querySelector로 잡으면 첫 번째것만 잡아온다
+    // 다 잡으려면 querySelectorAll 사용하면 됨
+    const box = document.querySelectorAll('.box');
+    console.log(box);
+
+    gsap.from(box, {
+      autoAlpha: 0,
+      y: -50,
+      rotation: 20,
+      duration: 1,
+
+      // position parameter을 준 것 같이 동작 -> stagger
+      // stagger: 0.5
+      stagger: {
+        each: 0.5,
+        // from: 'end' /* 애니메이션 순서 뒤에서부터 */
+        // from: 'center' /* 애니메이션 순서 중간에서부터 */
+        from: 'random' /* 애니메이션 순서 랜덤 */
+      }
+    })
+
+    // https://gsap.com/resources/getting-started/Staggers/
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>timeline</title>
+
+  <style>
+    .wrap {
+      /* w70p+m50-a+bd */
+      width: 70%;
+      margin: 50px auto;
+      border: 1px solid #000;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      margin-top: 30px;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .yellow {
+      background: yellow;
+    }
+
+    .blue {
+      background: blue;
+    }
+  </style>
+
+  <!-- gsap 주소 복붙 -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="box red"></div>
+    <div class="box yellow"></div>
+    <div class="box blue"></div>
+  </div>
+
+  <script>
+    // gsap.to('.red', { x: 800, duration: 2 })
+    // gsap.to('.yellow', { x: 800, duration: 3, delay: 2 })
+    // gsap.to('.blue', { x: 800, duration: 1, delay: 5 })
+
+    // 여러 요소의 순차적인 애니메이션 제작을 위해, 타임라인을 설정!
+    const tl = gsap.timeline();
+
+    // 작성된 순서대로 실행 된다.
+    // tl.to('.red', { x: 800, duration: 2 })
+    // tl.to('.yellow', { x: 800, duration: 3, delay: 2 })
+    // tl.to('.blue', { x: 800, duration: 1 })
+
+    // position parameter
+    // tl.to('.red', { x: 800, duration: 2 })
+    // tl.to('.yellow', { x: 800, duration: 2 }, '-=2')
+    // tl.to('.blue', { x: 800, duration: 2 }, '<')
+
+    // 타임라인 상의 1초 지점에서 실행, 아래 3개의 코드의 효과는 똑같지만 두~세 번째가 제어하기 더 쉽다.
+    // tl.to('.yellow', { x: 800, duration: 2 }, 1)
+    // tl.to('.yellow', { x: 800, duration: 2 }, '-=2')
+    // tl.to('.yellow', { x: 800, duration: 2 }, '<')
+
+    tl.to('.red', { x: 800, duration: 2 })
+    tl.to('.yellow', { x: 800, duration: 3 }, '-=0.4')
+    tl.to('.blue', { x: 800, duration: 1 }, '<')
+  </script>
+</body>
+
+</html>

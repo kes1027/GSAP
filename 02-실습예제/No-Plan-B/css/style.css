@@ -1,0 +1,300 @@
+@charset "utf-8";
+
+:root {
+  --text-color: #333;
+  --primary-color: #ffdd2b;
+  --point-color: #f5cc00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+  max-width: 100%;
+}
+
+.hidden {
+  position: absolute;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  line-height: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+body {
+  font: 20px/1 'Montserrat', sans-serif;
+  color: var(--text-color);
+  height: 100vh;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--point-color);
+}
+
+.inner {
+  width: 89.5833%;
+  margin: 0 auto;
+  height: 100vh;
+  position: relative;
+}
+
+header {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 89.5313%;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* .logo {
+  visibility: hidden;
+} */
+
+nav {
+  margin-left: auto;
+  margin-right: 5%;
+  display: flex;
+}
+
+nav a {
+  margin: 0 28px;
+  font-weight: 600;
+}
+
+.menu {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: url(../images/hamburger.svg) 50% no-repeat;
+}
+
+.bruce-lee {
+  position: absolute;
+  bottom: 0;
+  left: -50px;
+  width: 37.5vw;
+  z-index: 100;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(20px 30px 20px rgba(0, 0, 0, 0.4));
+}
+
+.bruce-lee-bg {
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  width: 45vw;
+  z-index: 90;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.bruce-lee img,
+.bruce-lee-bg img {
+  width: 100%;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  font-weight: 800;
+  font-size: 9vw;
+}
+
+.title h2 .char {
+  animation: flicker-1 2s linear infinite both;
+  animation-delay: calc(60ms * var(--char-index));
+}
+
+.title strong {
+  font-size: 8.5vw;
+  display: block;
+  margin-bottom: -30px;
+}
+
+.title span {
+  display: block;
+  position: relative;
+}
+
+.title b {
+  color: var(--primary-color);
+}
+
+.small-bruce-lee {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  cursor: pointer;
+}
+
+/* gsap 애니메이션이 종료된 후 action 클래스 부여 */
+.small-bruce-lee.action {
+  animation: bounce-top infinite alternate 0.9s both; /* alternate 쓰지 않으면 끊긴다. 0 % -> 100% -> 0% 번갈아 이동함 */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 89.5833%;
+  /* height: 255px; */
+  height: 13.2813vw;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.foot-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  user-select: none;
+  pointer-events: none;
+
+  width: 100%;
+  height: 13.2813vw;
+  background: var(--primary-color);
+}
+
+.foot-contents {
+  text-align: right;
+}
+
+.sns-link {
+  display: inline-flex;
+}
+
+.sns-link li {
+  margin: 0 15px;
+  width: 35px;
+  height: 35px;
+}
+
+.sns-link li a {
+  display: block;
+  height: 100%;
+  text-indent: -999px;
+  overflow: hidden;
+  background: 50% /90% no-repeat;
+}
+
+.sns-link li:nth-child(1) a {
+  background-image: url(../images/bi_facebook.png);
+}
+
+.sns-link li:nth-child(2) a {
+  background-image: url(../images/entypo-social_youtube.png);
+}
+
+.sns-link li:nth-child(3) a {
+  background-image: url(../images/instagram-filled.png);
+}
+
+.copyright {
+  margin-top: 20px;
+}
+
+/* 작은 브루스 리 통통 튀게하는 애니메이션 */
+@keyframes bounce-top {
+  0% {
+    transform: translateY(-45px);
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-24px);
+    animation-timing-function: ease-in;
+  }
+  65% {
+    transform: translateY(-12px);
+    animation-timing-function: ease-in;
+  }
+  82% {
+    transform: translateY(-6px);
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(-4px);
+    animation-timing-function: ease-in;
+  }
+  25%,
+  55%,
+  75%,
+  87% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+}
+
+/* NO Plan B 글자 애니메이션 */
+@keyframes flicker-1 {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  41.99% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0;
+  }
+  43% {
+    opacity: 0;
+  }
+  43.01% {
+    opacity: 1;
+  }
+  47.99% {
+    opacity: 1;
+  }
+  48% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  49.01% {
+    opacity: 1;
+  }
+}
